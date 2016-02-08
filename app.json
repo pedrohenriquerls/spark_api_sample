@@ -1,0 +1,6 @@
+{
+  "name": "sparkexample",
+  "description": "Spark api sample",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
