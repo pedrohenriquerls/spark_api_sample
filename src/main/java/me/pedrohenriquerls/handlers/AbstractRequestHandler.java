@@ -19,6 +19,11 @@ public abstract class AbstractRequestHandler implements Route {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
+        if(Config.debug){
+            System.out.println(gson.toJson(request.queryParams()));
+            System.out.println(request.body());
+        }
+
         Map<String, String> urlParams;
         if(request.requestMethod().equals("GET")) {
             token = request.queryParams("token");

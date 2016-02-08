@@ -3,13 +3,14 @@ package me.pedrohenriquerls.models;
 import lombok.Data;
 import me.pedrohenriquerls.sql2omodel.Sql2oModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 @Data
 public class Company implements Validable{
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
     private UUID company_uuid;
     private String city;
     private String name;
@@ -28,6 +29,10 @@ public class Company implements Validable{
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public void setEmployee(Employee employee){
+        this.employees.add(employee);
     }
 
     public Boolean save(){
@@ -63,12 +68,29 @@ public class Company implements Validable{
     public Company(){}
 
     public void setParams(Map<String, String> params){
-        city = params.get("city");
-        name = params.get("name");
-        email = params.get("email");
-        address = params.get("address");
-        country = params.get("country");
-        phone_number = params.get("phone_number");
+        String city = params.get("city");
+        if(city != null && !city.isEmpty())
+            this.city = city;
+
+        String name = params.get("name");
+        if(name != null && !name.isEmpty())
+            this.name = name;
+
+        String email = params.get("email");
+        if(email != null)
+            this.email = email;
+
+        String address = params.get("address");
+        if(address != null && !address.isEmpty())
+            this.address = address;
+
+        String country = params.get("country");
+        if(country != null && !country.isEmpty())
+            this.country = country;
+
+        String phone_number = params.get("phone_number");
+        if(phone_number != null)
+            this.phone_number = phone_number;
     }
 }
 
