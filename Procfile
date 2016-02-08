@@ -1,1 +1,1 @@
-web: mvn exec:java -Dexec.args="--db-port 5432"
+web: java -jar /app/user/target sparksample-jar-with-dependencies.jar
